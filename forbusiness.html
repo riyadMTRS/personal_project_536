@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Businesses | Gozal Tea - Your Production Partner</title>
+    <meta name="description" content="Partner with Gozal Tea for premium tea production solutions, including private labeling, bulk supply, and custom blending from our UAE factory.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom CSS to define a luxurious palette and apply fonts */
+        :root {
+            /* Sunlight Green Palette */
+            --color-sunlight-green-light: #FBFCE8; /* Very light, almost white, yellow-green */
+            --color-sunlight-green-medium: #7CB342; /* Fresh, vibrant green */
+            --color-sunlight-green-dark: #33691E; /* Deep leaf green */
+            --color-sunlight-gold: #FFC107; /* Vibrant sunlight gold */
+            --color-charcoal-dark: #2C2C2C; /* Dark grey for contrast text */
+            --color-grey-light: #888888; /* Lighter grey for secondary text */
+
+            /* New variables for SVG animations */
+            --total-loop-duration: 15s; /* Total animation loop duration */
+            --intro-delay: 0.5s;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--color-charcoal-dark);
+            background-color: var(--color-sunlight-green-light); /* Sunlight green background */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            color: var(--color-sunlight-green-dark); /* Darker green for headings */
+        }
+        /* Custom scroll-behavior for smooth scrolling on anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Styling for the custom message box (instead of alert) */
+        .message-box {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 0.75rem; /* Rounded corners */
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            text-align: center;
+            max-width: 90%;
+            width: 400px;
+            border: 1px solid var(--color-sunlight-green-medium); /* Subtle border */
+        }
+        .message-box button {
+            margin-top: 1rem;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+            color: white;
+            font-weight: 600;
+            border-radius: 0.5rem; /* Rounded corners */
+            transition-property: background-color;
+            transition-duration: 300ms;
+            background-color: var(--color-sunlight-green-medium);
+            border: none;
+        }
+        .message-box button:hover {
+            background-color: var(--color-sunlight-green-dark);
+        }
+
+        /* Enhanced scroll-responsive backgrounds */
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* --- SVG LOGO ANIMATION STYLES (Rising Sun & Tea Hills Concept) --- */
+        /* Keyframes for overall logo pulse */
+        @keyframes logoPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.01); } /* Subtle pulse */
+        }
+
+        /* Keyframes for sun element rising */
+        @keyframes sunRise {
+            0%, 5% { /* Start hidden below, with no opacity */
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            15% { /* Rise and become visible */
+                opacity: 1;
+                transform: translateY(0px);
+            }
+            90% { /* Stay visible */
+                opacity: 1;
+            }
+            100% { /* Fade out and move up slightly on exit */
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Keyframes for sun glow expansion */
+        @keyframes sunGlow {
+            0%, 10% { /* Start hidden with no radius */
+                r: 0;
+                opacity: 0;
+            }
+            20% { /* Expand to full glow */
+                r: 100;
+                opacity: 0.8;
+            }
+            30% { /* Settle to a softer glow */
+                r: 80;
+                opacity: 0.5;
+            }
+            80% { /* Maintain glow */
+                opacity: 0.5;
+            }
+            90% { /* Fade out */
+                r: 100;
+                opacity: 0;
+            }
+            100% { opacity: 0; }
+        }
+
+        /* Keyframes for tea hills formation */
+        @keyframes hillsForm {
+            0%, 10% { /* Start hidden below, compressed vertically */
+                transform: scaleY(0) translateY(20px);
+                opacity: 0;
+            }
+            20% { /* Emerge and overshoot slightly */
+                transform: scaleY(1.1) translateY(-5px);
+                opacity: 1;
+            }
+            25% { /* Settle to normal size */
+                transform: scaleY(1) translateY(0);
+                opacity: 1;
+            }
+            90% { /* Stay visible */
+                opacity: 1;
+            }
+            100% { /* Fade out */
+                opacity: 0;
+            }
+        }
+
+        /* Keyframes for text reveal (general purpose) */
+        @keyframes textReveal {
+            0%, 20% { opacity: 0; transform: translateY(10px); }
+            30% { opacity: 1; transform: translateY(0); }
+            90% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        /* Keyframes for slogan reveal */
+        @keyframes sloganReveal {
+            0%, 30% { opacity: 0; transform: translateY(10px); }
+            40% { opacity: 1; transform: translateY(0); }
+            90% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        /* Keyframes for EST text reveal */
+        @keyframes estReveal {
+            0%, 40% { opacity: 0; transform: translateY(10px); }
+            50% { opacity: 1; transform: translateY(0); }
+            90% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        /* Keyframes for SUNTEA logo fade-in */
+        @keyframes sunteaLogoFadeIn {
+            0%, 70% { opacity: 0; }
+            80% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        /* Apply animations */
+        .logo-wrapper {
+            animation: logoPulse 4s ease-in-out infinite;
+            will-change: transform;
+        }
+
+        .sun-element {
+            animation: sunRise var(--total-loop-duration) ease-out infinite;
+            transform-origin: center;
+            will-change: transform, opacity;
+        }
+
+        .sun-glow {
+            animation: sunGlow var(--total-loop-duration) ease-out infinite;
+            will-change: r, opacity;
+        }
+
+        .tea-hills {
+            animation: hillsForm var(--total-loop-duration) ease-out infinite;
+            transform-origin: bottom center;
+            will-change: transform, opacity;
+        }
+
+        .gozal-tea-text-svg { /* Added -svg to distinguish from main site text */
+            animation: textReveal var(--total-loop-duration) ease-out infinite;
+            animation-delay: calc(var(--intro-delay) + 0.5s);
+            will-change: transform, opacity;
+        }
+
+        .wellington-text-svg { /* Added -svg to distinguish from main site text */
+            animation: textReveal var(--total-loop-duration) ease-out infinite;
+            animation-delay: calc(var(--intro-delay) + 1.0s);
+            will-change: transform, opacity;
+        }
+
+        .slogan-text-svg { /* Added -svg to distinguish from main site text */
+            animation: sloganReveal var(--total-loop-duration) ease-out infinite;
+            animation-delay: calc(var(--intro-delay) + 1.5s);
+            will-change: transform, opacity;
+        }
+
+        .est-text-svg { /* Added -svg to distinguish from main site text */
+            animation: estReveal var(--total-loop-duration) ease-out infinite;
+            animation-delay: calc(var(--intro-delay) + 2.0s);
+            will-change: transform, opacity;
+        }
+
+        .suntea-logo-circle {
+            animation: sunteaLogoFadeIn var(--total-loop-duration) ease-out infinite;
+            will-change: opacity;
+        }
+
+        /* SVG Container Styling - applied to the div wrapping the SVG */
+        .svg-container-logo {
+            width: 100%;
+            max-width: 400px; /* Generous max width */
+            height: auto;
+            margin: auto; /* Center the container */
+            border-radius: 1.5rem; /* Rounded corners */
+            box-sizing: content-box; /* Ensure padding adds to size */
+        }
+
+        /* Font styles for SVG text */
+        .font-playfair-display { font-family: 'Playfair Display', serif; }
+        .font-montserrat { font-family: 'Montserrat', sans-serif; }
+        .font-lato { font-family: 'Lato', sans-serif; }
+        .font-merriweather { font-family: 'Merriweather', serif; }
+        .font-dancing-script { font-family: 'Dancing Script', cursive; }
+
+        /* Colors for SVG elements (Updated to Sunlight Green theme) */
+        .color-gold-bright { fill: var(--color-sunlight-gold); }
+        .color-gold-dark { fill: #DAA520; } /* Slightly darker gold */
+        .color-emerald-dark { fill: var(--color-sunlight-green-dark); }
+        .color-emerald-light { fill: var(--color-sunlight-green-medium); }
+        .color-brown-dark { fill: #6B4226; } /* Earthy brown */
+        .color-cream { fill: #FFFFFF; } /* White for highlight */
+        .color-grey-mid { fill: var(--color-grey-light); }
+        .color-grey-dark { fill: var(--color-charcoal-dark); }
+
+
+        /* General responsive adjustments */
+        @media (max-width: 768px) {
+            .svg-container-logo {
+                max-width: 320px;
+            }
+            .gozal-tea-text-svg { font-size: 38px; }
+            .wellington-text-svg { font-size: 14px; }
+            .slogan-text-svg { font-size: 18px; }
+            .est-text-svg { font-size: 10px; }
+            .suntea-logo-circle { r: 15px; cx: 150px; cy: 100px; } /* Adjusted for mobile */
+        }
+
+        @media (max-width: 480px) {
+            .svg-container-logo {
+                max-width: 260px;
+            }
+            .gozal-tea-text-svg { font-size: 30px; }
+            .wellington-text-svg { font-size: 12px; }
+            .slogan-text-svg { font-size: 16px; }
+            .est-text-svg { font-size: 8px; }
+            .suntea-logo-circle { r: 12px; cx: 150px; cy: 100px; } /* Adjusted for very small mobile */
+        }
+        /* End SVG LOGO ANIMATION STYLES */
+
+        /* Header scroll-up/scroll-down styles */
+        .header-hidden {
+            top: -100px; /* Adjust based on actual header height */
+        }
+        .header-visible {
+            top: 0;
+        }
+        header {
+            transition: top 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="shadow-sm py-4 sticky w-full z-50 top-0" style="background-color: var(--color-sunlight-green-light);">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <div class="relative svg-container-logo logo-wrapper w-20 h-20 md:w-32 md:h-32">
+                    <svg
+                        viewBox="0 0 300 300"
+                        class="w-full h-full"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <defs>
+                            <radialGradient id="sunGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                                <stop offset="0%" stop-color="var(--color-sunlight-gold)" />
+                                <stop offset="100%" stop-color="#DAA520" />
+                            </radialGradient>
+
+                            <radialGradient id="sunGlowGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                                <stop offset="0%" stop-color="rgba(255, 193, 7, 0.8)" />
+                                <stop offset="70%" stop-color="rgba(255, 165, 0, 0.3)" />
+                                <stop offset="100%" stop-color="rgba(255, 165, 0, 0)" />
+                            </radialGradient>
+
+                            <linearGradient id="hillsGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="var(--color-sunlight-green-dark)" />
+                                <stop offset="100%" stop-color="var(--color-sunlight-green-medium)" />
+                            </linearGradient>
+
+                            <linearGradient id="sloganTextGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="var(--color-sunlight-gold)" />
+                                <stop offset="100%" stop-color="#DAA520" />
+                            </linearGradient>
+                        </defs>
+
+                        <circle
+                            cx="150"
+                            cy="100"
+                            r="0" /* Starts invisible */
+                            fill="url(#sunGlowGradient)"
+                            class="sun-glow"
+                        />
+
+                        <circle
+                            cx="150"
+                            cy="100"
+                            r="40"
+                            fill="url(#sunGradient)"
+                            class="sun-element"
+                        />
+
+                        <circle
+                            cx="150"
+                            cy="100"
+                            r="18" /* Size of the SUNTEA circle */
+                            fill="var(--color-cream)" /* Creamy white for contrast */
+                            class="suntea-logo-circle"
+                        />
+
+                        <path
+                            d="M 0 150 Q 75 120 150 150 T 300 150 L 300 300 L 0 300 Z"
+                            fill="url(#hillsGradient)"
+                            class="tea-hills"
+                            transform-origin="center bottom"
+                        />
+                        <path
+                            d="M 0 170 Q 75 140 150 170 T 300 170 L 300 300 L 0 300 Z"
+                            fill="url(#hillsGradient)"
+                            opacity="0.8" /* Slightly transparent for depth */
+                            class="tea-hills"
+                            transform-origin="center bottom"
+                            transform="translateY(10)" /* Slightly offset for layering */
+                        />
+
+                        <text
+                            x="150"
+                            y="200"
+                            font-family="Merriweather, serif"
+                            font-size="48"
+                            font-weight="bold"
+                            text-anchor="middle"
+                            fill="var(--color-sunlight-green-dark)" /* Darker green for text */
+                            class="gozal-tea-text-svg"
+                        >
+                            Gozal Tea
+                        </text>
+
+                        <text
+                            x="150"
+                            y="235"
+                            font-family="Montserrat, sans-serif"
+                            font-size="16"
+                            text-anchor="middle"
+                            fill="var(--color-charcoal-dark)" /* Mid-tone grey for text */
+                            class="wellington-text-svg"
+                        >
+                            Wellington Marketing FZE
+                        </text>
+
+                        <text
+                            x="150"
+                            y="260"
+                            font-family="Dancing Script, cursive"
+                            font-size="22"
+                            font-weight="bold"
+                            text-anchor="middle"
+                            fill="url(#sloganTextGradient)"
+                            class="slogan-text-svg"
+                        >
+                            Start Fresh Stay Inspired
+                        </text>
+
+                        <text
+                            x="150"
+                            y="285"
+                            font-family="Montserrat, sans-serif"
+                            font-size="12"
+                            text-anchor="middle"
+                            fill="var(--color-grey-light)" /* Light grey for text */
+                            class="est-text-svg"
+                        >
+                            EST 1970
+                        </text>
+                    </svg>
+                </div>
+            </a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="text-gray-700 hover:text-sunlight-green-medium font-medium transition-colors duration-200">Home</a>
+                <a href="our-teas.html" class="text-gray-700 hover:text-sunlight-green-medium font-medium transition-colors duration-200">Our Teas</a>
+                <a href="our-story.html" class="text-gray-700 hover:text-sunlight-green-medium font-medium transition-colors duration-200">Our Story</a>
+                <a href="#" class="text-sunlight-green-medium font-medium transition-colors duration-200">For Businesses</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-gray-700 hover:text-sunlight-green-medium focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-opacity-95 z-50 flex flex-col items-center justify-center space-y-8" style="background-color: var(--color-sunlight-green-light);">
+            <button id="close-mobile-menu" class="absolute top-6 right-6 text-gray-700 hover:text-sunlight-green-medium focus:outline-none">
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <a href="index.html" class="text-4xl text-gray-800 hover:text-sunlight-green-medium font-semibold" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Home</a>
+            <a href="our-teas.html" class="text-4xl text-gray-800 hover:text-sunlight-green-medium font-semibold" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Our Teas</a>
+            <a href="our-story.html" class="text-4xl text-gray-800 hover:text-sunlight-green-medium font-semibold" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Our Story</a>
+            <a href="#" class="text-4xl text-sunlight-green-medium font-semibold" onclick="document.getElementById('mobile-menu').classList.add('hidden')">For Businesses</a>
+        </div>
+    </header>
+
+    <main class="py-16 md:py-24">
+        <section class="container mx-auto px-6 text-center">
+            <h1 class="text-5xl md:text-6xl font-bold mb-16" data-aos="fade-up">
+                Partner with Gozal Tea: Your Production Solution
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-700 mb-12 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                Beyond our beloved Gozal Tea brand, our state-of-the-art UAE factory is equipped to be your strategic partner for premium tea production. From private labeling to custom blending, we offer comprehensive B2B solutions.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+                <div class="bg-white p-8 rounded-3xl shadow-xl border border-sunlight-green-medium hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105" data-aos="fade-right" data-aos-delay="200">
+                    <h3 class="text-3xl font-bold mb-4" style="color: var(--color-sunlight-gold);">Private Labeling</h3>
+                    <p class="text-lg mb-6 text-gray-700">Leverage our expertise and facilities to create your own branded tea products. We handle the production, so you can focus on your brand's vision.</p>
+                    <ul class="text-left text-lg space-y-3 mb-8 text-gray-600">
+                        <li class="flex items-center"><svg class="w-6 h-6 mr-3 text-sunlight-gold" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Custom Blends & Packaging</li>
+                        <li class="flex items-center"><svg class="w-6 h-6 mr-3 text-sunlight-gold" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Quality Assurance</li>
+                        <li class="flex items-center"><svg class="w-6 h-6 mr-3 text-sunlight-gold" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Scalable Production</li>
+                    </ul>
+                    <a href="index.html#contact" class="inline-block bg-sunlight-green-medium text-white font-semibold px-8 py-3 rounded-lg hover:bg-sunlight-green-dark transition-colors duration-300 text-lg" style="background-color: var(--color-sunlight-green-medium);">Enquire About Private Label</a>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl shadow-xl border border-sunlight-green-medium hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105" data-aos="fade-left" data-aos-delay="300">
+                    <h3 class="text-3xl font-bold mb-4" style="color: var(--color-sunlight-gold);">Bulk Supply & Custom Blends</h3>
+                    <p class="text-lg mb-6 text-gray-700">Access our wide range of premium tea ingredients in bulk, or let us craft bespoke blends tailored to your unique specifications.</p>
+                    <ul class="text-left text-lg space-y-3 mb-8 text-gray-600">
+                        <li class="flex items-center"><svg class="w-6 h-6 mr-3 text-sunlight-gold" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Diverse Tea Varieties</li>
+                        <li class="flex items-center"><svg class="w-6 h-6 mr-3 text-sunlight-gold" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Expert Blending Services</li>
+                        <li class="flex items-center"><svg class="w-6 h-6 mr-3 text-sunlight-gold" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Competitive Pricing</li>
+                    </ul>
+                    <a href="index.html#contact" class="inline-block bg-sunlight-green-medium text-white font-semibold px-8 py-3 rounded-lg shadow-lg hover:bg-sunlight-green-dark transition-colors duration-300 text-lg" style="background-color: var(--color-sunlight-green-medium);">Request Bulk Quote</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-white py-12" style="background-color: var(--color-sunlight-green-dark);">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <div class="mb-6 md:mb-0">
+                    <a href="index.html" class="text-3xl font-bold text-white">Gozal Tea</a>
+                    <p class="text-gray-300 mt-2">Crafting Luxury & Fresh Starts Since 1970</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="https://facebook.com/gozaltea" class="text-gray-300 hover:text-white transition-colors duration-200">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm3.6 8.4h-2.4V6.8c0-.6.4-1.2 1.2-1.2h1.2V3.6H13.2c-2.4 0-4.8 1.8-4.8 4.8v2.4H6v3.6h2.4v7.2h3.6v-7.2h2.4l.6-3.6z"></path></svg>
+                    </a>
+                    <a href="https://instagram.com/gozaltea" class="text-gray-300 hover:text-white transition-colors duration-200">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M7.8 2h8.4C18.15 2 20 3.85 20 6.2v8.4c0 2.35-1.85 4.2-4.2 4.2H7.8C5.45 19 3.6 17.15 3.6 14.8V6.2C3.6 3.85 5.45 2 7.8 2zm-.2 2.4c-.9 0-1.6.7-1.6 1.6v8.4c0 .9.7 1.6 1.6 1.6h8.4c.9 0 1.6-.7 1.6-1.6V6.2c0-.9-.7-1.6-1.6-1.6H7.6zm1.2 2.4h6c.66 0 1.2.54 1.2 1.2v6c0 .66-.54 1.2-1.2 1.2h-6c-.66 0-1.2-.54-1.2-1.2v-6c0-.66.54-1.2 1.2-1.2zm3.2 1.2c-1.76 0-3.2 1.44-3.2 3.2s1.44 3.2 3.2 3.2 3.2-1.44 3.2-3.2-1.44-3.2-3.2-3.2zm0 1.6c.88 0 1.6.72 1.6 1.6s-.72 1.6-1.6 1.6-1.6-.72-1.6-1.6.72-1.6 1.6-1.6zm4.8-5.6c0-.66-.54-1.2-1.2-1.2H16c-.66 0-1.2.54-1.2 1.2v.4c0 .66.54 1.2 1.2 1.2h.4c.66 0 1.2-.54 1.2-1.2v-.4z"></path></svg>
+                    </a>
+                    <a href="https://linkedin.com/company/gozaltea" class="text-gray-300 hover:text-white transition-colors duration-200">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.564c0-1.312-.023-2.998-1.824-2.998-1.826 0-2.106 1.424-2.106 2.909v5.653H9.437V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.612 0 4.28 2.378 4.28 5.485v6.356zM5.337 7.199a1.884 1.884 0 01-1.883-1.892c0-1.042.842-1.891 1.883-1.891s1.883.849 1.883 1.891c0 1.042-.842 1.892-1.883 1.892zm1.751 13.253H3.586V9h3.502v11.452zM22.227 0H1.771C.792 0 0 .779 0 1.745v20.51C0 23.22 2.227 24 1.771 24h20.455c.979 0 1.772-.78 1.772-1.746V1.745C24 .779 23.208 0 22.227 0z"></path></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8 mt-8" style="border-color: rgba(255, 255, 255, 0.2);">
+                <p class="text-gray-400 text-sm">&copy; <span id="current-year"></span> Gozal Tea. All rights reserved. | Powered by Wellington Marketing FZE</p>
+                <div class="mt-4 text-gray-400 text-sm">
+                    <a href="#" class="hover:text-white transition-colors duration-200 mx-2">Privacy Policy</a>
+                    <span class="mx-2">|</span>
+                    <a href="#" class="hover:text-white transition-colors duration-200 mx-2">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+            duration: 1000,
+            easing: 'ease-out-quad',
+        });
+
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMobileMenuButton = document.getElementById('close-mobile-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+        });
+
+        closeMobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+    </script>
+</body>
+</html>
